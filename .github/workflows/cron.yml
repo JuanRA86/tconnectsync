@@ -1,0 +1,27 @@
+name: TConnect Sync
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Se ejecuta cada 5 minutos
+  workflow_dispatch: # Permite darle al botón de "Play" manual
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install tconnectsync
+      - name: Run sync
+        env:
+          TCONNECT_EMAIL: ${{ secrets.TCONNECT_EMAIL }}
+          TCONNECT_PASSWORD: ${{ secrets.TCONNECT_PASSWORD }}
+          NS_URL: ${{ secrets.NS_URL }}
+          NS_SECRET: ${{ secrets.NS_SECRET }}
+        run: |
+          tconnectsync --start-date $(date -d '2 hours ago' +%Y-%m-%d) --secret $NS_SECRET --url $NS_URL --email $TCONNECT_EMAIL --password $TCONNECT_PASSWORD
