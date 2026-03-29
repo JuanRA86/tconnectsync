@@ -24,4 +24,4 @@ jobs:
           NS_URL: ${{ secrets.NS_URL }}
           NS_SECRET: ${{ secrets.NS_SECRET }}
         run: |
-          tconnectsync --email "$TCONNECT_EMAIL" --password "$TCONNECT_PASSWORD" --url "$NS_URL" --secret "$NS_SECRET"
+          tconnectsync
