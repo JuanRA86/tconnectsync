@@ -27,4 +27,4 @@ jobs:
           NS_URL: ${{ secrets.NS_URL }}
           NS_SECRET: ${{ secrets.NS_SECRET }}
         run: |
-          tconnectsync --region EU
+          tconnectsync --region EU --auto-update
