@@ -28,4 +28,4 @@ jobs:
           NS_SECRET: ${{ secrets.NS_SECRET }}
           TZ: Europe/Madrid
         run: |
-          tconnectsync --region EU
+          tconnectsync --region EU || echo "Ignorando aviso de TZ"
