@@ -26,6 +26,6 @@ jobs:
           TCONNECT_PASSWORD: ${{ secrets.TCONNECT_PASSWORD }}
           NS_URL: ${{ secrets.NS_URL }}
           NS_SECRET: ${{ secrets.NS_SECRET }}
+          TZ: Europe/Madrid
         run: |
-          export TZ="Europe/Madrid"
           tconnectsync --region EU
