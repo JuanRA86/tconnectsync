@@ -18,7 +18,7 @@ jobs:
 
       - name: Install tconnectsync
         run: |
-          pip install tconnectsync
+          pip install --upgrade tconnectsync
 
       - name: Run sync
         env:
@@ -26,6 +26,5 @@ jobs:
           TCONNECT_PASSWORD: ${{ secrets.TCONNECT_PASSWORD }}
           NS_URL: ${{ secrets.NS_URL }}
           NS_SECRET: ${{ secrets.NS_SECRET }}
-          TZ: Europe/Madrid
         run: |
-          tconnectsync --region EU || echo "Ignorando aviso de TZ"
+          tconnectsync --region EU --features BASAL BOLUS PUMP_EVENTS PROFILES
